@@ -3,7 +3,9 @@ import {LIST_ISLOADING, LIST_FETCHSUCCESS, LIST_SELECTRESTAURANT} from '../actio
 const initialState = {
   isLoading: false,
   restaurants: [],
-  selectedRestaurant: {}
+  selectedRestaurant: null,
+  orderByRating: false,
+  filterText: ''
 }
 
 const listViewReducer = (state = initialState, action) => {

@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import ListView from '../components/ListView.js';
-import {fetchRestaurants} from '../actions/listViewActions'
+import {fetchRestaurants, selectRestaurant} from '../actions/listViewActions'
 const mapStateToProps = (state) => {
   return ({
     listView: state.listView,
@@ -10,7 +10,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    fetchRestaurants
+    fetchRestaurants,
+    selectRestaurant
   }, dispatch)
 }
 

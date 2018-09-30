@@ -5,6 +5,7 @@ import './css/main.css';
 import ListViewContainer from './containers/ListViewContainer'
 import { BrowserRouter } from 'react-router-dom';
 import Loader from './components/Loader'
+import OrderContainer from './containers/OrderContainer'
 class App extends Component {
   render() {
     return (
@@ -17,6 +18,7 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/restaurants" component={ListViewContainer} />
+          <Route exact path="/restaurants/order" component={OrderContainer} />
           <Redirect to="/restaurants" />
         </Switch>
         </BrowserRouter>

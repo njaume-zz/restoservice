@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import RestaurantCard from './ResturantCard'
-import FilterBox from './FilterBox'
 import { Redirect } from 'react-router'
-
+import Input from '../Input';
+import AutocompletePlaces from '../AutocompletePlaces'
+import Button from '../Button';
 const WAIT_INTERVAL = 1000;
 
 
-class ListView extends Component {
+class Order extends Component {
    
   constructor() {
     super()
@@ -61,33 +61,37 @@ class ListView extends Component {
         this.props.selectRestaurant(restaurant)
     }
 
-    renderList = () =>{
-      let restaurantsFiltered = this.props.listView.restaurants.filter((restaurant) => {
-          if(this.fuzzy(restaurant.commercialName, this.state.filterText) || this.fuzzy(restaurant.address, this.state.filterText))
-          return restaurant
-      })
-
-      if (this.state.orderByRating) this.sortByRating(restaurantsFiltered)
+    renderOrderForm = () =>{
         return (
-            <React.Fragment>
-                <FilterBox onChangeFilter={this.onChangeFilter} onChangeOrderByRating={this.onChangeOrderByRating} orderByRating={this.state.orderByRating}/>
-                <center>
-                <ul className="mat_list card scrollable"> 
-                    {restaurantsFiltered.map((restaurant, index) =>
-                        (<RestaurantCard key={`rcard_${index}`}  index={index} restaurant={restaurant} onSelectRestaurant={this.onSelectRestaurant}/>))}
-                </ul>
-                </center>         
-            </React.Fragment> 
+            <div className="container_flex">
+                <div className="card">
+                <div className="item_flex">
+                <Input label="Name" required/>
+                </div> 
+                <div className="item_flex">
+                <Input label="Last Name" required/>
+                </div> 
+                <div className="item_flex">
+                <Input label="Phone" required/>
+                </div> 
+                <div className="item_flex">
+                <AutocompletePlaces />
+                </div> 
+                <div className="item_flex">
+                <Button label="submit"/>
+                </div> 
+                </div>               
+            </div> 
                 )
             }
 
         render() {
-            if(this.props.listView.selectedRestaurant){
+            if(!this.props.selectedRestaurant){
                 console.log("redirect")
-                return <Redirect to='/restaurants/order' />
+                return <Redirect to='/restaurants' />
             } 
-              else return this.renderList()
+              else return this.renderOrderForm()
               }
             }
 
-export default ListView;
+export default Order;

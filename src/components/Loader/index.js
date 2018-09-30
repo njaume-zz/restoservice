@@ -5,7 +5,7 @@ class Loader extends Component {
     render() {
         return (
             <React.Fragment>
-            {this.props.isLoading && <div class="lds-ring"><div></div><div></div><div></div><div></div></div>}
+            {this.props.isLoading && <div className="lds-ring"><div></div><div></div><div></div><div></div></div>}
             </React.Fragment>
                 )
             }
