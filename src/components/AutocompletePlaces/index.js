@@ -35,7 +35,7 @@ class AutocompletePlaces extends React.Component {
           <div>
             <input
               {...getInputProps({
-                placeholder: 'Search Places ...',
+                placeholder: 'Search Address ...',
                 className: 'location-search-input',
               })}
             />

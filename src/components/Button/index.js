@@ -3,7 +3,7 @@ import '../../css/button.css'
 class Button extends Component {
         render() {
             return(
-                <button className="btn" type={this.props.type ? this.props.type : "button"} onClick={this.props.onClick}><span>{this.props.label}</span></button>
+                <button disabled={this.props.disabled} className="btn" type={this.props.type ? this.props.type : "button"} onClick={this.props.onClick}><span>{this.props.label}</span></button>
             )
               }
             }

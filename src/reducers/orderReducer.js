@@ -1,4 +1,4 @@
-import {ORDER_ISLOADING, ORDER_POSTSUCCESS, ORDER_ETA} from '../actionstypes'
+import {ORDER_ISLOADING, ORDER_POSTSUCCESS, ORDER_ETA, ORDER_INIT} from '../actionstypes'
 
 const initialState = {
   isLoading: false,
@@ -23,6 +23,8 @@ const orderReducer = (state = initialState, action) => {
         ...state,
         eta: {...action.payload.eta}
       }
+      case ORDER_INIT:
+      return initialState
     default:
       return state
   }

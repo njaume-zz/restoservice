@@ -3,8 +3,10 @@ import { Redirect } from 'react-router'
 import Input from '../Input';
 import AutocompletePlaces from '../AutocompletePlaces'
 import Button from '../Button';
-const WAIT_INTERVAL = 1000;
-
+import AutocompleteField from '../AutocompleteField'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom'
 
 class Order extends Component {
    
@@ -13,83 +15,109 @@ class Order extends Component {
 
     this.state = {
       orderByRating : false,
-      filterText: ''
+      selectedMeal : '',
+      name: '',
+      lastName: '',
+      phone: '',
+      address: ''
     };
   }
 
-    componentDidMount(){
-        if(this.props.fetchRestaurants) this.props.fetchRestaurants()
-
+    componentWillUnmount(){
+        this.props.initialState()
+    }
+    onChangeMeal = (selectedMeal) => {
+        this.setState({selectedMeal : selectedMeal})
     }
 
-    onChangeFilter = (event) =>{
-        clearTimeout(this.timer);
-        const filterText = event.target.value
-        this.timer = setTimeout(() => {
-         this.setState({filterText: filterText})
-        }, WAIT_INTERVAL);
-      }
-
-      onChangeOrderByRating = (event) =>{
-          console.log("onChangeOrderByRating")
-        const orderBy = event.target.checked
-         this.setState({orderByRating: orderBy})
-      }
-
-
-    fuzzy = (value, s) =>{
-        var hay = value.toLowerCase(), i = 0, n = -1, l;
-        s = s.toLowerCase();
-        for (; l = s[i++] ;) if (!~(n = hay.indexOf(l, n + 1))) return false;
-        return true;
+    onChangeInput = (event) => {
+        const name = event.target.name
+        const value = event.target.value
+        this.setState({[name]: value})
     }
 
-    sortByRating = (restaurants) => {
-        restaurants.sort(function (a, b) {
-            if (a.rating > b.rating) {
-              return 1;
-            }
-            if (a.rating < b.rating) {
-              return -1;
-            }
-            return 0;
-          });
+    validForm = () => {
+        return (this.state.name.length > 0 && this.state.lastName.length > 0 && this.state.phone.length > 0 && this.state.selectedMeal.key)
     }
 
-    onSelectRestaurant = (restaurant) => {
-        console.log("restaurant", restaurant)
-        this.props.selectRestaurant(restaurant)
+    onSubmit = (e) => {
+        e.preventDefault()
+        if (this.validForm()) this.props.postOrderForm(this.state)
+        else this.notify()
     }
+
+    notify = () => toast.warn("Complete all fields  !");
 
     renderOrderForm = () =>{
         return (
             <div className="container_flex">
-                <div className="card">
+                      <ToastContainer />
+            <form>
+            <div className="card">
                 <div className="item_flex">
-                <Input label="Name" required/>
+                    <Input
+                        name='name' 
+                        onChange={this.onChangeInput}
+                        label="Name" required
+                        />
                 </div> 
                 <div className="item_flex">
-                <Input label="Last Name" required/>
+                    <Input 
+                        name='lastName'
+                        onChange={this.onChangeInput}
+                        label="Last Name" required/>
                 </div> 
                 <div className="item_flex">
-                <Input label="Phone" required/>
+                    <Input 
+                        name='phone'
+                        onChange={this.onChangeInput}
+                        type="tel" label="Phone" required/>
                 </div> 
                 <div className="item_flex">
-                <AutocompletePlaces />
+                    <AutocompletePlaces required/>
                 </div> 
                 <div className="item_flex">
-                <Button label="submit"/>
+                    <AutocompleteField 
+                        floatingLabelText="Meal" 
+                        onChange={this.onChangeMeal}
+                        value={this.state.selectedMeal}
+                        dataSource={this.props.selectedRestaurant.meals ? this.props.selectedRestaurant.meals : []} 
+                        dataSourceConfig={this.props.selectedRestaurant.meals ? {'text':'description', 'value': 'key'} : null}
+                        required />
                 </div> 
-                </div>               
+                <div className="item_flex">
+                 <Button type='submit' label="submit" onClick={this.onSubmit} disabled={this.props.isLoading}/>
+                </div> 
             </div> 
+        </form>
+    </div> 
                 )
             }
+    
+    renderEta = () => {
+        let eta = new Date();
+        eta.setMinutes( eta.getMinutes() + 30 );
+        return (
+            <div className="container_flex">
+                <div className="card">
+                <div className="item_flex" style={{color: 'green', fontSize: 20, fontWeight: 'lighter'}}>
+                    Success!
+                </div>
+                <div className="item_flex">
+                    Estimated time of arrival : {eta.toString()}
+                </div>
+                <div className="item_flex">
+                    <Link style={{textDecoration:'none'}} to='/restaurants'><Button type='button' label="back"/></Link>
+                </div>
+                </div>
+            </div>
+        )
+        
+    }
 
         render() {
-            if(!this.props.selectedRestaurant){
-                console.log("redirect")
-                return <Redirect to='/restaurants' />
-            } 
+            if(!this.props.selectedRestaurant) return <Redirect to='/restaurants' />
+            else if(!this.props.order.postSuccess) return this.renderEta()
               else return this.renderOrderForm()
               }
             }

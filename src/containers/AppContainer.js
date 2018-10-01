@@ -4,7 +4,7 @@ import App from '../App';
 
 const mapStateToProps = (state) => {
   return ({
-    isLoading: state.listView.isLoading,
+    isLoading: state.listView.isLoading || state.order.isLoading,
   });
 }
 

@@ -1,4 +1,4 @@
-import {LIST_FETCHSUCCESS, LIST_ISLOADING, LIST_SELECTRESTAURANT} from '../actionstypes'
+import {LIST_FETCHSUCCESS, LIST_ISLOADING, LIST_SELECTRESTAURANT, LIST_INIT} from '../actionstypes'
 import {getRestaurants} from '../api'
 
 export const listViewIsLoading = (loading) => ({
@@ -22,6 +22,12 @@ export const fetchRestaurantsSucccess = (restaurants) => ({
     }
   })
 
+  export const listInitialState = () => ({
+    type: LIST_INIT,
+    payload: {
+       
+    }
+  })
 
 export function fetchRestaurants() {
     return async (dispatch) => {

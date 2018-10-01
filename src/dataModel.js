@@ -14,11 +14,15 @@ const data = [{
     ],
     meals : [
         {
+            key: 'Parrillada',
+
             name : 'Parrillada',
             description : 'Parrillada completa',
             price : 300,
         },
         {
+            key: 'Papas',
+
             name : 'Papas Cheddar',
             description : 'Papas Cheddar',
             price : 300,
@@ -44,11 +48,13 @@ const data = [{
         ],
         meals : [
             {
+                key: 'Parrillada',
                 name : 'Parrillada',
                 description : 'Parrillada completa',
                 price : 300,
             },
             {
+                key: 'Papas',
                 name : 'Papas Cheddar',
                 description : 'Papas Cheddar',
                 price : 300,
@@ -74,11 +80,13 @@ const data = [{
             ],
             meals : [
                 {
+                    key: 'Parrillada',
                     name : 'Parrillada',
                     description : 'Parrillada completa',
                     price : 300,
                 },
                 {
+                    key: 'Papas',
                     name : 'Papas Cheddar',
                     description : 'Papas Cheddar',
                     price : 300,

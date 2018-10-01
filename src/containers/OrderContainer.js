@@ -1,16 +1,18 @@
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import Order from '../components/Order';
-import {postOrderForm} from '../actions/orderActions'
+import {postOrderForm, initialState} from '../actions/orderActions'
 const mapStateToProps = (state) => {
   return ({
     selectedRestaurant: state.listView.selectedRestaurant,
+    order: state.order
   });
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    postOrderForm
+    postOrderForm,
+    initialState
   }, dispatch)
 }
 

@@ -6,6 +6,7 @@ class Input extends Component {
         return (
             <div className="group">      
                 <input 
+                name={this.props.name}
                 type={this.props.type ? this.props.type : 'text'} 
                 required={this.props.required ? this.props.required : false}
                 value={this.props.value}

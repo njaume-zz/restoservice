@@ -1,0 +1,210 @@
+/* ==========  Select Field Variables ========== */
+/* ==========  Select Field ========== */
+/* Style Select Field */
+.input {
+  cursor: pointer;
+  background-color: transparent;
+  width: 100%;
+  padding: 4px 0;
+  font-size: 1rem;
+  color: rgba(0,0,0, 0);
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0, 0.12);
+}
+
+/* Remove focus */
+.input:focus {
+  outline: none;
+  border-bottom: 1px solid #8a0808;
+  color: transparent;
+  text-shadow: 0px 0px 0px black;
+}
+
+/* Remove focus */
+.input-filter:focus {
+  border-bottom: 1px solid #8a0808;
+  color: black;
+}
+
+/* Hide label */
+.label-inactive {
+  /*z-index: 1111;*/
+  position: relative;
+  top: -30px;
+  line-height: 22px;
+  font-size: 17px;
+  color: #8a0808;
+  transition: 0.2s;
+
+}
+
+/* Use custom arrow */
+.mdl-selectfield input {
+  appearance: none;
+  color: rgba(0, 0, 0, 1);
+  font-family: Roboto, sans-serif;
+}
+
+.mdl-selectfield {
+  margin-top: 15px;
+  tab-index: 0;
+  font-family: 'Roboto','Helvetica','Arial','sans-serif';
+  position: relative;
+  font-size: 15px;
+  line-height: 24px;
+  width: 100%;
+  /*height: 72px;*/
+  display: inline-block;
+  position: relative;
+  background-color: transparent;
+  font-family: Roboto, sans-serif;
+  transition: height 200ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  cursor: auto;
+}
+  .mdl-selectfield:after {
+    position: absolute;
+    top: 0.75em;
+    right: 0.5em;
+    /* Styling the down arrow */
+    width: 0;
+    height: 0;
+    padding: 0;
+    content: '';
+    border-left: .25em solid transparent;
+    border-right: .25em solid transparent;
+    border-top: 0.375em solid rgba(0,0,0, 1);
+    pointer-events: none;
+  }
+
+  .mdl-selectfield:disabled {
+
+    cursor: none;
+  }
+
+.input[type="text"][disabled="disabled"] {
+    color: rgba(0, 0, 0, 0);
+    cursor: none;
+  }
+
+  .label-active {
+    position: relative;
+    top:-60px;
+    font-size: 0.8rem;
+    color:#8a0808;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+.ul {
+  list-style-type: none;
+  text-decoration: none;
+  appearance: none;
+  background-color: rgb(255, 255, 255);
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0.3ms;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  border-radius: 2px;
+  min-height: 150px;
+  max-height: 150px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+}
+
+.ul-selectfield {
+  list-style-type: none;
+  text-decoration: none;
+  appearance: none;
+  background-color: rgb(255, 255, 255);
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0.3ms;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  border-radius: 2px;
+  min-height: 150px;
+  max-height: 150px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-top: -20px;
+}
+
+.ul-header{
+  margin-top: -20px;
+  list-style-type: none;
+  text-decoration: none;
+  appearance: none;
+  background-color: rgb(255, 255, 255);
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0.3ms;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  border-radius: 2px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.li  {
+  cursor: pointer;
+  padding-left: 15px;
+  padding-top: 10px;
+  text-decoration: none;
+  -webkit-appearance:none;
+  min-height: 40px;
+  max-height: 40px;
+  font-family: Roboto, sans-serif;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 13px;
+  font-weight: normal;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  tap-highlight-color: rgba(0, 0, 0, 0);
+  overflow-x: hidden;
+
+}
+
+.input-filter{
+  padding-left: 15px;
+  width: 100%;
+  /*padding: 4px 0;*/
+  font-size: 12px;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0, 0.12);
+}
+
+.option-selected {
+  background-color: #DBDBDB;
+}
+
+
+.select{
+  cursor: pointer;
+}
+
+.select:disabled{
+  color: rgba(0, 0, 0, 0.3);
+  cursor: none;
+}
+
+.label-active-disabled{
+  position: relative;
+  top:-50px;
+  font-size:14px;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.label-inactive-disabled {
+  /*z-index: 1111;*/
+  position: relative;
+  top: -30px;
+  line-height: 22px;
+  font-size: 17px;
+  color: rgba(0, 0, 0, 0.3);
+  transition: 0.2s;
+
+}

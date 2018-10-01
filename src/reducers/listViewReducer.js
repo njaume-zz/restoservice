@@ -1,4 +1,4 @@
-import {LIST_ISLOADING, LIST_FETCHSUCCESS, LIST_SELECTRESTAURANT} from '../actionstypes'
+import {LIST_ISLOADING, LIST_FETCHSUCCESS, LIST_SELECTRESTAURANT, LIST_INIT} from '../actionstypes'
 
 const initialState = {
   isLoading: false,
@@ -25,6 +25,8 @@ const listViewReducer = (state = initialState, action) => {
         ...state,
         selectedRestaurant: {...action.payload.selectedRestaurant}
       }
+      case LIST_INIT:
+      return initialState
     default:
       return state
   }
