@@ -117,7 +117,7 @@ class Order extends Component {
 
         render() {
             if(!this.props.selectedRestaurant) return <Redirect to='/restaurants' />
-            else if(!this.props.order.postSuccess) return this.renderEta()
+            else if(this.props.order.postSuccess) return this.renderEta()
               else return this.renderOrderForm()
               }
             }
